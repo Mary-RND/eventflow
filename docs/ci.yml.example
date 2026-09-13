@@ -1,0 +1,45 @@
+﻿# Пример GitHub Actions workflow для запуска тестов.
+#
+# Токен репозитория должен иметь разрешение "Workflows", иначе GitHub
+# вернёт 404 при попытке создать файлы в .github/workflows/.
+#
+# Как активировать:
+#   1. Убедитесь, что у токена есть право "Workflows".
+#   2. Переименуйте этот файл в .github/workflows/ci.yml
+#      (создайте папку .github/workflows/) и закоммитьте.
+#   3. Тесты будут запускаться на каждый push и pull request.
+
+name: CI
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install Python dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements-dev.txt
+
+      - name: Check JavaScript syntax
+        run: |
+          node --check app/db.js
+          node --check app/app.js
+
+      - name: Run tests
+        run: pytest -v
