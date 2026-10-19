@@ -1,8 +1,14 @@
-# EventFlow
+> [← Портфолио Марины Петрушиной](https://mary-rnd.github.io/portfolio/) — сайты, ИИ-боты, трекеры и автоматизация для малого бизнеса и MedTech.
+
+# EventFlow — управление участниками мероприятия
 
 Локальное приложение организатора мероприятия в одном браузере: превращает разрозненную таблицу регистраций в управляемый список участников. Без сервера и облака — все данные хранятся локально (IndexedDB).
 
-Учебный проект с нуля: от брифа до критериев приёмки и acceptance-тестов (см. `docs/technical-specification.md` и `references/project-brief.md`).
+**▶ Живое демо:** https://mary-rnd.github.io/eventflow/
+
+<img src="screenshots/app-hero.png" alt="Экран EventFlow со списком участников" width="100%">
+
+Кейс: от брифа до критериев приёмки и acceptance-тестов (см. `docs/technical-specification.md` и `references/project-brief.md`).
 
 ## Возможности
 
